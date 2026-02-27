@@ -18,7 +18,7 @@ def exe1(q, a, b):
 
     @always_comb
     def comb():
-        pass
+        q.next = a or (not b)
 
     return instances()
 
@@ -29,7 +29,7 @@ def exe2(q, a, b, c):
     Implemente a tabela verdade a seguir:
 
     A B C | Q
-    ------|--
+    ------|-- 
     0 0 0 | 1
     0 0 1 | 0
     0 1 0 | 0
@@ -44,8 +44,8 @@ def exe2(q, a, b, c):
 
     @always_comb
     def comb():
-        q.next = a or b
-
+        q.next = (~a and b and c) or (a and ~b and ~c) or (~a and ~b and ~c)
+        
     return instances()
 
 
@@ -72,7 +72,7 @@ def exe3(q, a, b, c, d, e):
 
     @always_comb
     def comb():
-        q.next = a
+        q.next = ((((a or b) and c ) and d) and e)
 
     return instances()
 
